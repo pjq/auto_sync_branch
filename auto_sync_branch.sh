@@ -28,7 +28,7 @@ function git_branch_sync {
     check_result $? "git checkout ${TO}"
     git merge  --no-edit origin/${FROM}
     check_result $? "Merge ${FROM} > ${TO}"
-    #git push origin ${TO}
+    git push origin ${TO}
     check_result $? "Push to remote"
 }
 
