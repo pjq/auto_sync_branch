@@ -1,4 +1,5 @@
-Script for auto sync the code from branch [A] to [B] with just one click
+Script for auto sync/merge the code from branch [A] to [B] with just one click
+
 ## How to start  
 ```
 vim config.txt
@@ -56,6 +57,10 @@ Merge pjq/develop > user/develop success!
 Push to remote success!
 Sync pjq/develop>user/develop success!
 ```
+## Update Rules
+The rule is simple, define the branch `from>to`, and use "|" to split different rules
 
-
+```
+RULE="develop>pjq/develop|pjq/develop>user/develop"
+```
 
