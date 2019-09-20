@@ -17,7 +17,7 @@ DEVELOP_BRANCH="develop"
 REMOTE_REPO="https://github.com/pjq/auto_sync_branch.git"
 LOCAL_REPO="local"
 WORKSPACE="./auto_sync_branch_workspace"
-RULE="develop>pjq/develop|pjq/develop>user/develop"
+RULE="master>develop|develop>pjq/develop|pjq/develop>user/develop"
 ```
 
 Then run it
@@ -28,7 +28,7 @@ chmod +x auto_sync_branch.sh
 Output
 ```
 ./auto_sync_branch.sh -f config.txt
-Config file:config.txt.example
+Config file:config.txt
 read config...
 Prepare the workspace...
 Cloning into 'local'...
@@ -103,6 +103,6 @@ Sync pjq/develop>user/develop success!
 The rule is simple, define the branch `from>to`, and use "|" to split different rules
 
 ```
-RULE="develop>pjq/develop|pjq/develop>user/develop"
+RULE="master>develop|develop>pjq/develop|pjq/develop>user/develop"
 ```
 
