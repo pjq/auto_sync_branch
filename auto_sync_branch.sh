@@ -53,11 +53,11 @@ function prepare_workspace {
 
 function read_config {
     echo "read config..."
-    RULE=`cat ${CONFIG}|grep RULE|cut -d "=" -f2|sed "s/\"//g"|sed "s/|/ /g"`
-    DEVELOP_BRANCH=`cat ${CONFIG}|grep DEVELOP_BRANCH|cut -d "=" -f2|sed "s/\"//g"`
-    REMOTE_REPO=`cat ${CONFIG}|grep REMOTE_REPO|cut -d "=" -f2|sed "s/\"//g"`
-    LOCAL_REPO=`cat ${CONFIG}|grep LOCAL_REPO|cut -d "=" -f2|sed "s/\"//g"`
-    WORKSPACE=`cat ${CONFIG}|grep WORKSPACE|cut -d "=" -f2|sed "s/\"//g"`
+    RULE=`cat ${CONFIG}|grep RULE|sed "s/ //g"|cut -d "=" -f2|sed "s/\"//g"|sed "s/|/ /g"`
+    DEVELOP_BRANCH=`cat ${CONFIG}|sed "s/ //g"|grep DEVELOP_BRANCH|cut -d "=" -f2|sed "s/\"//g"`
+    REMOTE_REPO=`cat ${CONFIG}|sed "s/ //g"|grep REMOTE_REPO|cut -d "=" -f2|sed "s/\"//g"`
+    LOCAL_REPO=`cat ${CONFIG}|sed "s/ //g"|grep LOCAL_REPO|cut -d "=" -f2|sed "s/\"//g"`
+    WORKSPACE=`cat ${CONFIG}|sed "s/ //g"|grep WORKSPACE|cut -d "=" -f2|sed "s/\"//g"`
 }
 
 function start_sync {
