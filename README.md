@@ -1,8 +1,15 @@
 Script for auto sync/merge the code from branch [A] to [B] with just one click
 
-## How to start  
+## Quick Start 
 ```
-vim config.txt
+chmod +x auto_sync_branch.sh
+./auto_sync_banch.sh -f config.txt.example
+```
+*But you may have permission issue, as you are not the contributor of the this repo*
+
+## How to update the configurations
+```
+cp config.txt.example config.txt
 ```
 And update the configs to what you want
 ```
@@ -16,11 +23,12 @@ RULE="develop>pjq/develop|pjq/develop>user/develop"
 Then run it
 ```
 chmod +x auto_sync_branch.sh
-./auto_sync_branch.sh
+./auto_sync_branch.sh -f config.txt
 ```
 Output
 ```
-./auto_sync_branch.sh
+./auto_sync_branch.sh -f config.txt
+Config file:config.txt.example
 read config...
 Prepare the workspace...
 Cloning into 'local'...

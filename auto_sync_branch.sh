@@ -3,7 +3,27 @@
 # Created by pengjianqing@gmail.com, 09/19/2019
 # e.g develop>pjq/develop_feature
 
-CONFIG=config.txt
+CONFIG=config.txt.example
+
+# get the config file
+if [ $# = 2 ]; then
+    if [ $1 = "-f" ]; then
+        CONFIG=$2
+        echo "Config file:$CONFIG"
+    else
+        echo "Usage: $0 -f config.txt"
+        exit -1
+    fi
+else
+    echo "Usage: $0 -f config.txt"
+    exit -1
+fi
+
+# check the config is existing
+if [ ! -f "$CONFIG" ]; then
+    echo "${CONFIG} doesn't exist."
+    exit -1
+fi
 
 # check the last command result, if failed, just exit -1
 function check_result {
@@ -34,11 +54,11 @@ function git_branch_sync {
 
 # parse one rule and start the sync task
 function sync_one_rule {
-  SYNC_RULE=$1
-  echo "Sync rule ${SYNC_RULE}"
-  FROM=`echo ${SYNC_RULE}|cut -d ">" -f1`
-  TO=`echo ${SYNC_RULE}|cut -d ">" -f2`
-  git_branch_sync ${FROM} ${TO}
+    SYNC_RULE=$1
+    echo "Sync rule ${SYNC_RULE}"
+    FROM=`echo ${SYNC_RULE}|cut -d ">" -f1`
+    TO=`echo ${SYNC_RULE}|cut -d ">" -f2`
+    git_branch_sync ${FROM} ${TO}
 }
 
 # prepare the `clean` workspace and clone the repo
