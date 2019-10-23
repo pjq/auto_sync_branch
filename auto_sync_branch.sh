@@ -66,7 +66,7 @@ function prepare_workspace {
     echo "Prepare the workspace..."
     [ -d ${WORKSPACE} ] || mkdir -p ${WORKSPACE}
     cd ${WORKSPACE}
-    rm -rf * 
+    [ ! -z ${WORKSPACE} ] && [ ! -z "${LOCAL_REPO}" ] && [ -d ${LOCAL_REPO} ] &&  rm -rf ${LOCAL_REPO} 
     git clone -b ${DEVELOP_BRANCH} ${REMOTE_REPO} ${LOCAL_REPO}
     cd ${LOCAL_REPO}
 }
